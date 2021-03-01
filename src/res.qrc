@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>LearningCollection/LearningShader_shader/frag.fs</file>
+        <file>LearningCollection/LearningShader_shader/vert.vs</file>
+        <file>LearningCollection/Hello_Triangle_shader/frag.fs</file>
+        <file>LearningCollection/Hello_Triangle_shader/vert.vs</file>
+        <file>LearningCollection/images/container.jpg</file>
+        <file>LearningCollection/Textures_shader/frag.fs</file>
+        <file>LearningCollection/Textures_shader/vert.vs</file>
+        <file>LearningCollection/images/awesomeface.png</file>
+    </qresource>
+</RCC>
