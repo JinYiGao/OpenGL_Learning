@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->comboBox->addItem("1:Hello_Triangle");
 	ui->comboBox->addItem("2:LearnShader");
 	ui->comboBox->addItem("3:Textures");
+	ui->comboBox->addItem("4:Transform");
+
 	ui->comboBox->blockSignals(false);
 	ui->comboBox->setCurrentIndex(-1);
 }
@@ -45,6 +47,12 @@ void MainWindow::on_comboBox_currentIndexChanged(const int &arg1)
 		texturesWidget->show();
 		texturesWidget->move(150, 100);
 		texturesWidget->resize(450, 450);
+		break;
+	case 3:
+		transformWidget = new TransformWidget(this);
+		transformWidget->show();
+		transformWidget->move(150, 100);
+		transformWidget->resize(450, 450);
 		break;
 	default:
 		break;

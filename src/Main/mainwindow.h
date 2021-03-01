@@ -15,6 +15,7 @@
 #include <LearningCollection/myWidget.cpp>
 #include <LearningCollection/learnShaderWidget.cpp>
 #include <LearningCollection/texturesWidget.cpp>
+#include <LearningCollection/transformWidget.cpp>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,7 @@ public:
 	MyGLWidget *myGLWidget = nullptr;
 	LearnShaderWidget *learnShaderWidget = nullptr;
 	TexturesWidget *texturesWidget = nullptr;
+	TransformWidget *transformWidget = nullptr;
 
 private slots:
 	void on_comboBox_currentIndexChanged(const int &arg1);
