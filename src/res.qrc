@@ -8,5 +8,54 @@
         <file>LearningCollection/Textures_shader/frag.fs</file>
         <file>LearningCollection/Textures_shader/vert.vs</file>
         <file>LearningCollection/images/awesomeface.png</file>
+        <file>LearningCollection/Transform_shader/frag.fs</file>
+        <file>LearningCollection/Transform_shader/vert.vs</file>
+        <file>LearningCollection/ThreeD_shader/frag.fs</file>
+        <file>LearningCollection/ThreeD_shader/vert.vs</file>
+        <file>LearningCollection/Color_shader/Objfrag.fs</file>
+        <file>LearningCollection/Color_shader/Objvert.vs</file>
+        <file>LearningCollection/Color_shader/lightfrag.fs</file>
+        <file>LearningCollection/Color_shader/lightvert.vs</file>
+        <file>LearningCollection/Lighting_shader/lightfrag.fs</file>
+        <file>LearningCollection/Lighting_shader/lightvert.vs</file>
+        <file>LearningCollection/Lighting_shader/objfrag.fs</file>
+        <file>LearningCollection/Lighting_shader/objvert.vs</file>
+        <file>LearningCollection/Materials_shader/lightfrag.fs</file>
+        <file>LearningCollection/Materials_shader/lightvert.vs</file>
+        <file>LearningCollection/Materials_shader/objfrag.fs</file>
+        <file>LearningCollection/Materials_shader/objvert.vs</file>
+        <file>LearningCollection/images/container2.png</file>
+        <file>LearningCollection/images/container2_specular.png</file>
+        <file>LearningCollection/LightingMaps_shader/lightfrag.fs</file>
+        <file>LearningCollection/LightingMaps_shader/lightvert.vs</file>
+        <file>LearningCollection/LightingMaps_shader/objfrag.fs</file>
+        <file>LearningCollection/LightingMaps_shader/objvert.vs</file>
+        <file>LearningCollection/images/marble.jpg</file>
+        <file>LearningCollection/images/metal.png</file>
+        <file>LearningCollection/StencilTesting_shader/objfrag.fs</file>
+        <file>LearningCollection/StencilTesting_shader/objvert.vs</file>
+        <file>LearningCollection/StencilTesting_shader/singlefrag.fs</file>
+        <file>LearningCollection/images/blending_transparent_window.png</file>
+        <file>LearningCollection/Blending_shader/frag.fs</file>
+        <file>LearningCollection/Blending_shader/vert.vs</file>
+        <file>LearningCollection/Framebuffers_shader/framebuffers.fs</file>
+        <file>LearningCollection/Framebuffers_shader/framebuffers.vs</file>
+        <file>LearningCollection/Framebuffers_shader/framebuffers_screen.fs</file>
+        <file>LearningCollection/Framebuffers_shader/framebuffers_screen.vs</file>
+        <file>LearningCollection/images/back.jpg</file>
+        <file>LearningCollection/images/bottom.jpg</file>
+        <file>LearningCollection/images/front.jpg</file>
+        <file>LearningCollection/images/left.jpg</file>
+        <file>LearningCollection/images/right.jpg</file>
+        <file>LearningCollection/images/top.jpg</file>
+        <file>LearningCollection/CubeMaps_shader/cubemaps.fs</file>
+        <file>LearningCollection/CubeMaps_shader/cubemaps.vs</file>
+        <file>LearningCollection/CubeMaps_shader/skybox.fs</file>
+        <file>LearningCollection/CubeMaps_shader/skybox.vs</file>
+        <file>LearningCollection/UniformBuffer_shader/blue.fs</file>
+        <file>LearningCollection/UniformBuffer_shader/cube.vs</file>
+        <file>LearningCollection/UniformBuffer_shader/green.fs</file>
+        <file>LearningCollection/UniformBuffer_shader/red.fs</file>
+        <file>LearningCollection/UniformBuffer_shader/yellow.fs</file>
     </qresource>
 </RCC>

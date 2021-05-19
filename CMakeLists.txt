@@ -35,7 +35,7 @@ SET(CMAKE_AUTORCC ON)
 find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets )
 
 #添加矩阵运算库eigen
-find_package(Eigen3)
+find_package(Eigen3 REQUIRED)
 
 #添加头文件搜索目录 Eigen3头文件目录 当前cmakelists文件所在目录/src
 include_directories(${EIGEN3_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src)

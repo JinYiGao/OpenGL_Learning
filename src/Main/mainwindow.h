@@ -11,11 +11,22 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 
 #include <LearningCollection/myWidget.cpp>
 #include <LearningCollection/learnShaderWidget.cpp>
 #include <LearningCollection/texturesWidget.cpp>
 #include <LearningCollection/transformWidget.cpp>
+#include <LearningCollection/threeDWidget.cpp>
+#include <LearningCollection/colorWidget.cpp>
+#include <LearningCollection/lightingWidget.cpp>
+#include <LearningCollection/materialsWidget.cpp>
+#include <LearningCollection/lightingMapsWidget.cpp>
+#include <LearningCollection/stencilTestingWidget.cpp>
+#include <LearningCollection/blendingWidget.cpp>
+#include <LearningCollection/framebuffersWidget.cpp>
+#include <LearningCollection/cubemapsWidget.cpp>
+#include <LearningCollection/uniformBufferWidget.cpp>
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +44,16 @@ public:
 	LearnShaderWidget *learnShaderWidget = nullptr;
 	TexturesWidget *texturesWidget = nullptr;
 	TransformWidget *transformWidget = nullptr;
+	ThreeDWidget *threeDWidget = nullptr;
+	ColorWidget *colorWidget = nullptr;
+	LightingWidget *lightingWidget = nullptr;
+	MaterialsWidget *materialWidget = nullptr;
+	LightingMapsWidget *lightingMapsWidget = nullptr;
+	StencilTestingWidget *stencilTestingWidget = nullptr;
+	BlendingWidget *blendingWidget = nullptr;
+	FramebuffersWidget *framebuffersWidget = nullptr;
+	CubeMapsWidget * cubemapsWidget = nullptr;
+	UniformBufferWidget *uniformBufferWidget = nullptr;
 
 private slots:
 	void on_comboBox_currentIndexChanged(const int &arg1);
