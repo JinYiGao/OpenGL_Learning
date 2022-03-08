@@ -42,7 +42,7 @@ Eigen::Matrix4f Camera::lookAt(const Eigen::Vector3f &origin, const Eigen::Vecto
 	result(0, 3) = -s.transpose() * origin;
 	result(1, 3) = -u.transpose() * origin;
 	result(2, 3) = f.transpose() * origin;
-
+	//std::cout << result << std::endl;
 	return result;
 }
 
@@ -93,7 +93,7 @@ Eigen::Matrix4f Camera::createModel(Eigen::Matrix4f rotation, Eigen::Vector3f tr
 std::tuple<Eigen::Matrix4f, Eigen::Matrix4f, Eigen::Matrix4f> Camera::get_mvp()
 {
 	Eigen::Matrix4f model, view, proj;
-	view = lookAt(position, position + target, up);//创建观察矩阵
+	view = lookAt(position, target, up);//创建观察矩阵
 	
 	float fH = std::tan(view_angle / 360.0f * M_PI) * position.z();
 	float fW = fH * (float)size.x() / (float)size.y();
@@ -107,11 +107,12 @@ std::tuple<Eigen::Matrix4f, Eigen::Matrix4f, Eigen::Matrix4f> Camera::get_mvp()
 	}
 
 	Eigen::Matrix4f rotation = arcball.matrix();
+	//std::cout << arcball.state().matrix() << std::endl;
 	view = view;
 	//模型矩阵理论上应该包含物体最初的 平移 旋转 缩放 状态
 	//控制相机视角下 模型的状态 不影响实际坐标 实际模型坐标由另一个模型矩阵来进行控制
 	model = createModel(rotation, model_translation, zoom);
-
+	//std::cout << model.matrix() << std::endl;
 	return std::make_tuple(model, view, proj);
 }
 

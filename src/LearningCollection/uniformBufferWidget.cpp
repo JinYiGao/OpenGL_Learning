@@ -99,13 +99,13 @@ protected:
 		shaderYellow = new Shader(":/LearningCollection/UniformBuffer_shader/cube.vs",
 			":/LearningCollection/UniformBuffer_shader/yellow.fs");
 
-		// 创建Uniform缓冲对象 绑定到绑定点0
+		// 创建Uniform缓冲对象 绑定到绑定点2
 		glGenBuffers(1, &uboMatrices);
 		glBindBuffer(GL_UNIFORM_BUFFER, uboMatrices);
 		///\开辟空间
 		glBufferData(GL_UNIFORM_BUFFER, 2 * sizeof(Eigen::Matrix4f), NULL, GL_STATIC_DRAW); // 64bytes
 		glBindBufferBase(GL_UNIFORM_BUFFER, 2, uboMatrices);//绑定到绑定点0
-
+		
 		camera->position = Eigen::Vector3f{ 0.0f, 0.0f, 1.0f };
     }
 

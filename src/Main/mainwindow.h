@@ -27,6 +27,7 @@
 #include <LearningCollection/framebuffersWidget.cpp>
 #include <LearningCollection/cubemapsWidget.cpp>
 #include <LearningCollection/uniformBufferWidget.cpp>
+#include <LearningCollection/instancingWidget.cpp>
 
 namespace Ui {
 class MainWindow;
@@ -54,6 +55,7 @@ public:
 	FramebuffersWidget *framebuffersWidget = nullptr;
 	CubeMapsWidget * cubemapsWidget = nullptr;
 	UniformBufferWidget *uniformBufferWidget = nullptr;
+	InstancingWidget *instancingWidget = nullptr;
 
 private slots:
 	void on_comboBox_currentIndexChanged(const int &arg1);

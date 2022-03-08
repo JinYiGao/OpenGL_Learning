@@ -1,9 +1,9 @@
 /*
  * @Descripttion: 1-绘制三角形
  * @version: 
- * @Author: JinYiGao
+ * @Author: Jin
  * @Date: 2021-01-31 00:31:56
- * @LastEditors: JinYiGao
+ * @LastEditors: Jin
  * @LastEditTime: 2021-03-01 20:59:49
  */
 
@@ -33,7 +33,10 @@ protected:
         float vertices[] = {
             -0.5, -0.5, 0.0,
             0.5, -0.5, 0.0,
-            0.0, 0.5, 0.0};
+            0.0, 0.5, 0.0,
+		-0.5, -0.5, 0.0,
+			0.5, -0.5, 0.0,
+			0.0, 0.5, 0.0 };
 
         //创建VAO并绑定 用于存储之后设置的所有状态
         glGenVertexArrays(1, &VAO);
@@ -78,6 +81,6 @@ protected:
         //使用着色器程序
         shaderProgram->bind();
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
     }
 };

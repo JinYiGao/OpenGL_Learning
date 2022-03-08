@@ -57,5 +57,7 @@
         <file>LearningCollection/UniformBuffer_shader/green.fs</file>
         <file>LearningCollection/UniformBuffer_shader/red.fs</file>
         <file>LearningCollection/UniformBuffer_shader/yellow.fs</file>
+        <file>LearningCollection/Instancing_shader/instancing.fs</file>
+        <file>LearningCollection/Instancing_shader/instancing.vs</file>
     </qresource>
 </RCC>

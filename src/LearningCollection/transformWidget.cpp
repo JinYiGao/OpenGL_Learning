@@ -18,6 +18,7 @@
 #include <Eigen/Eigen>
 //#include <Base/stb_image.h>
 #include <Base/base.h>
+#include <Base/common.h>
 
 //继承自QOpenGLFunctions可以避免每次调用opengl函数时使用前缀
 class TransformWidget : public QOpenGLWidget, protected QOpenGLFunctions_4_5_Core
@@ -70,6 +71,59 @@ protected:
 		Eigen::Vector2i pos;
 		pos = m * vec;
 		std::cout << pos << std::endl;
+
+		Eigen::Matrix3f f1;
+		f1 << 1, 2, 3,
+			4, 5, 6,
+			7, 8, 9;
+		Eigen::Matrix3f f2;
+		f2 << 11, 12, 13,
+			14, 15, 16,
+			17, 18, 19;
+		Eigen::MatrixXf f3;
+		f3.resize(6, 3);
+		f3 << f1,
+			f2;
+		std::cout << "f3: " << f3 << std::endl;
+		auto pt = f3.data();
+		std::cout << bool(pt) << std::endl;
+		int i = 0;
+		while (i < 18) {
+			std::cout << "next:" << *pt << unsigned(uint8_t(100)) << std::endl;
+			pt = pt + 1;
+			i++;
+		}
+
+		Eigen::MatrixXi_8 i1;
+		i1.resize(3, 4);
+		i1 << uint8_t(100), uint8_t(10), uint8_t(200), uint8_t(0),
+			uint8_t(30), uint8_t(44), uint8_t(12), uint8_t(0),
+			uint8_t(100), uint8_t(80), uint8_t(15), uint8_t(1);
+		std::cout << "i1(uint8): " << i1.rows() << std::endl;
+		for (int i = 0; i < 12; i++) {
+			std::cout << "i1(uint8): " << unsigned(*(i1.data() + uint8_t(i))) << " rows:" << i1.rows() << std::endl;
+		}
+
+		Eigen::MatrixXf i2f;
+		i2f.resize(1, 3);
+		memcpy(i2f.data(), i1.data(), 12 * sizeof(uint8_t));
+
+		/*i1.template cast<float>();
+		i1.resize(1, 3);
+		std::cout << "i1(float): " << i1 << "rows:" << i1.rows() << std::endl;*/
+
+		Eigen::MatrixXi_8 f2i8;
+		f2i8.resize(3, 4);
+		memcpy(f2i8.data(), i2f.data(), 3 * sizeof(float));
+		for (int i = 0; i < 12; i++) {
+			std::cout << "i1(int): " << unsigned(*(f2i8.data() + uint8_t(i))) << " rows:" << f2i8.rows() << std::endl;
+		}
+		std::cout << "sizeof(f2i8): " << f2i8.size() << std::endl;
+		std::cout << "sizeof(i1): " << f3.size() << std::endl;
+
+		int8_t *a = new int8_t[4]{ '1','2','3','4' };
+		Eigen::Matrix<int8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> mA = Eigen::Map<Eigen::Matrix<int8_t, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor>>(a, 2, 2);
+		std::cout << mA << "size: "<< sizeof(mA) << std::endl;
 		printf("-------我是一条分割线-------\n");
 
 		glEnable(GL_DEPTH_TEST);

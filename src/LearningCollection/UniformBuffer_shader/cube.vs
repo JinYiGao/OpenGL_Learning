@@ -1,7 +1,7 @@
 #version 450 core
 layout(location = 0) in vec3 aPos;
 
-//Uniform块 直接设置绑定点为0
+//Uniform块 直接设置绑定点为2
 layout(std140, binding = 2) uniform Matrices
 {
     mat4 projection;

@@ -31,6 +31,17 @@ public:
 protected:
     void initializeGL()
     {
+		Eigen::MatrixXf matrix;
+		matrix.resize(4, 3);
+		matrix <<
+			1, 5, 10,
+			4, 3, 6,
+			7, 8, 9,
+			10, 11, 12;
+		Vector3f a = { 1, 2, 3 };
+		Vector4f minp = matrix.rowwise().minCoeff();
+		std::cout << *(matrix.data() + 2) << std::endl;
+
         initializeOpenGLFunctions();
 
 		float vertices[] = {
@@ -85,9 +96,12 @@ protected:
 		glBindVertexArray(cubeVAO);
 
 		GLuint VBO;//设置立方体数据
-		glGenBuffers(1, &VBO);
+		glCreateBuffers(1, &VBO);
+		//glGenBuffers(1, &VBO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		//glNamedBufferStorage(VBO, sizeof(vertices), vertices, GL_DYNAMIC_STORAGE_BIT);
+		glNamedBufferData(VBO, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(0));
 		glEnableVertexAttribArray(0);

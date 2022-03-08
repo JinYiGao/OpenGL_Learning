@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->comboBox->addItem("17:Framebuffers");
 	ui->comboBox->addItem("18:CubeMaps");
 	ui->comboBox->addItem("19:UniformBuffer");
+	ui->comboBox->addItem("20:Instancing");
 
 	ui->comboBox->blockSignals(false);
 	ui->comboBox->setMaxVisibleItems(20);
@@ -144,6 +145,12 @@ void MainWindow::on_comboBox_currentIndexChanged(const int &arg1)
 		uniformBufferWidget->show();
 		uniformBufferWidget->move(150, 100);
 		uniformBufferWidget->resize(800, 600);
+		break;
+	case 19:
+		instancingWidget = new InstancingWidget(this);
+		instancingWidget->show();
+		instancingWidget->move(150, 100);
+		instancingWidget->resize(800, 600);
 		break;
 	default:
 		break;

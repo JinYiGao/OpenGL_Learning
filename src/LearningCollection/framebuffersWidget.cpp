@@ -17,6 +17,7 @@
 #include <Base/texture.h>
 #include <Base/camera.h>
 
+
 //继承自QOpenGLFunctions可以避免每次调用opengl函数时使用前缀
 class FramebuffersWidget : public QOpenGLWidget, protected QOpenGLFunctions_4_5_Core
 {
@@ -112,7 +113,7 @@ protected:
 		glBindVertexArray(cubeVAO);
 		glGenBuffers(1, &cubeVBO);
 		glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), &cubeVertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -123,7 +124,7 @@ protected:
 		glBindVertexArray(planeVAO);
 		glGenBuffers(1, &planeVBO);
 		glBindBuffer(GL_ARRAY_BUFFER, planeVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(planeVertices), &planeVertices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(planeVertices), planeVertices, GL_STATIC_DRAW);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -201,7 +202,7 @@ protected:
 		shader->bind();
 		Eigen::Matrix4f transform = camera->getTransform();
 		shader->setUniformValue("transform", transform);
-
+		//std::cout << transform * Eigen::Vector4f(5.0f, -0.5f, 5.0f, 1.0f).matrix()<<std::endl <<std::endl;
 		//draw cubes
 		glBindVertexArray(cubeVAO);
 		glActiveTexture(GL_TEXTURE0);
@@ -248,6 +249,7 @@ protected:
             Vector2i screen(e->localPos().x(), e->localPos().y());
             camera->start_rotate(screen); //开始旋转
             first = false;
+
         }
 
         //中键按下
@@ -277,11 +279,11 @@ protected:
     void wheelEvent(QWheelEvent *e)
     {
         // 缩放 这种效果不好 形变大
-		//camera->zoom = std::max(0.001, camera->zoom * (e->angleDelta().y() > 0 ? 1.1 : 0.9));
-		//camera->zoom = std::min(1000.0f, camera->zoom);
+		camera->zoom = std::max(0.001, camera->zoom * (e->angleDelta().y() > 0 ? 1.1 : 0.9));
+		camera->zoom = std::min(1000.0f, camera->zoom);
 
         //通过改变相机视野 来缩放 效果好
-        camera->view_angle = std::max(0.001, camera->view_angle * (e->angleDelta().y() < 0 ? 1.1 : 0.9));
-        camera->view_angle = std::min(1000.0f, camera->view_angle);
+        //camera->view_angle = std::max(0.001, camera->view_angle * (e->angleDelta().y() < 0 ? 1.1 : 0.9));
+        //camera->view_angle = std::min(1000.0f, camera->view_angle);
     }
 };
