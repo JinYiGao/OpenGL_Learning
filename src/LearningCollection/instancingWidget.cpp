@@ -24,7 +24,7 @@ public:
     InstancingWidget(QWidget *parent) : QOpenGLWidget(parent)
     {
     }
-	GLuint quadVAO, quadVBO;
+	GLuint quadVAO, quadVBO, quadColorVBO;
 	GLuint instanceVBO;
 	Shader *quadShader;
     Camera *camera = new Camera();
@@ -38,14 +38,24 @@ protected:
 
 		// 四边形
 		float quadVertices[] = {
-			// positions     // colors
-			-0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
-			 0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
-			-0.05f, -0.05f,  0.0f, 0.0f, 1.0f,
+			// positions     
+			-0.05f,  0.05f,  
+			 0.05f, -0.05f,  
+			-0.05f, -0.05f,  
 
-			-0.05f,  0.05f,  1.0f, 0.0f, 0.0f,
-			 0.05f, -0.05f,  0.0f, 1.0f, 0.0f,
-			 0.05f,  0.05f,  0.0f, 1.0f, 1.0f
+			-0.05f,  0.05f,  
+			 0.05f, -0.05f,  
+			 0.05f,  0.05f,  
+		};
+		float quadColors[] = {
+			// colors
+			1.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f,
+			0.0f, 0.0f, 1.0f,
+
+			1.0f, 0.0f, 0.0f,
+			0.0f, 1.0f, 0.0f,
+			0.0f, 1.0f, 1.0f
 		};
 
 		Eigen::Vector2f translations[100];
@@ -62,22 +72,28 @@ protected:
 			}
 		}
 
+		//quadVAO, quadVBO
+		glGenVertexArrays(1, &quadVAO);
+		glBindVertexArray(quadVAO);
+
+		glGenBuffers(1, &quadVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+		glEnableVertexAttribArray(0);
+		/*glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(2 * sizeof(float)));*/
+
+		glGenBuffers(1, &quadColorVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, quadColorVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(quadColors), &quadColors, GL_STATIC_DRAW);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+		glEnableVertexAttribArray(1);
+
 		//偏移数据缓冲区
 		glGenBuffers(1, &instanceVBO);
 		glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Eigen::Vector2f) * 100, translations[0].data(), GL_STATIC_DRAW);
-
-		//quadVAO, quadVBO
-		glGenVertexArrays(1, &quadVAO);
-		glBindVertexArray(quadVAO);
-		glGenBuffers(1, &quadVBO);
-		glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(2 * sizeof(float)));
-		glEnableVertexAttribArray(0);
-		glEnableVertexAttribArray(1);
-		glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
 		glEnableVertexAttribArray(2);
 		//告诉OpenGL什么时候更新顶点属性
@@ -97,14 +113,17 @@ protected:
 
     void paintGL()
     {
-		update();
+		//update();
+		//std::cout << glGetString(GL_VERSION) << std::endl;
 		// 清除颜色缓冲
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		quadShader->bind();
 		glBindVertexArray(quadVAO);
-		glDrawArraysInstanced(GL_TRIANGLES, 0, 0, 100);
+		glDrawArraysInstanced(GL_TRIANGLES, 0, 6, 100);
+		//glDrawArrays(GL_TRIANGLES, 0, 6);
+		//std::cout << glGetError() << std::endl;
     }
 
     //鼠标交互控制

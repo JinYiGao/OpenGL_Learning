@@ -20,6 +20,7 @@ Shader::Shader(const QString &vertShaderFileName, const QString &fragShaderFilen
 	}
 	else
 	{
+		qDebug() << "Success Linked!" << endl;
 		programId = shader->programId();
 	}
 }

@@ -1,0 +1,36 @@
+1 VERSIONINFO
+FILEVERSION     @H2O_INSTALL_VERSION_MAJOR@,@H2O_INSTALL_VERSION_MINOR@,@H2O_INSTALL_VERSION_REVISION@,0
+PRODUCTVERSION  @H2O_INSTALL_VERSION_MAJOR@,@H2O_INSTALL_VERSION_MINOR@,@H2O_INSTALL_VERSION_REVISION@,0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName",      "Vrlab\0"
+#if @H2O_INSTALL_LIBRARY@
+            VALUE "FileDescription",  "@H2O_INSTALL_NAME@ - H2O with @CMAKE_CXX_COMPILER_ID@ @CMAKE_CXX_COMPILER_VERSION@\0"
+#else // software
+            VALUE "FileDescription",  "@H2O_INSTALL_NAME@ - H2O @H2O_VERSION_MAJOR@.@H2O_VERSION_MINOR@.@H2O_VERSION_REVISION@\0"
+#endif
+            VALUE "FileVersion",      "@H2O_INSTALL_VERSION_MAJOR@.@H2O_INSTALL_VERSION_MINOR@.@H2O_INSTALL_VERSION_REVISION@.0\0"
+            VALUE "InternalName",     "@H2O_INSTALL_NAME@\0"
+            VALUE "LegalCopyright",   "Copyright (c) @COPYRIGHT_YEAR@ Han Hu\0"
+            VALUE "ProductName",      "H2O Library | @H2O_INSTALL_NAME@\0"
+            VALUE "ProductVersion",   "@H2O_INSTALL_VERSION_MAJOR@.@H2O_INSTALL_VERSION_MINOR@.@H2O_INSTALL_VERSION_REVISION@.0\0"
+            VALUE "Info", "https://vrlab.org.cn\0"
+        END
+    END
+
+    BLOCK "VarFileInfo"
+    BEGIN
+        /* The following line should only be modified for localized versions.     */
+        /* It consists of any number of WORD,WORD pairs, with each pair           */
+        /* describing a language,codepage combination supported by the file.      */
+        /*                                                                        */
+        /* For example, a file might have values "0x409,1252" indicating that it  */
+        /* supports English language (0x409) in the Windows ANSI codepage (1252). */
+
+        VALUE "Translation", 0x409, 1252
+
+    END
+END
